@@ -1,0 +1,37 @@
+-- rollback для всех DATABASE
+
+drop database вагонная_модель;
+drop database автомобильная_модель;
+drop database железнодорожная_станционная_модель;
+drop database модель_железнодорожных_перегонов;
+drop database модель_железнодорожного_парка_путей;
+drop database модель_станционных_путей;
+drop database модель_железнодорожного_состава;
+drop database модель_поездов;
+drop database модель_локомотивов;
+drop database модель_бригад_технического_осмотра;
+drop database модель_локомотивных_бригад;
+drop database модель_путей_перегона;
+drop database модель_компьютеров;
+drop database модель_магазина;
+drop database модель_населенных_пунктов;
+drop database модель_университетов;
+drop database модели_деканатов;
+drop database модели_кафедр;
+drop database модель_клиентов;
+drop database модель_железных_дорог;
+drop database модель_районов_управления_жд;
+drop database модель_диспетчерских_устройств;
+drop database модель_заправочных_станций;
+drop database модель_пунктов_технического_осмотра;
+drop database модель_вокзалов;
+drop database модель_аэропортов;
+drop database модель_морских_портов;
+drop database модель_самолетов;
+drop database модель_кораблей;
+drop database модель_космопортов;
+drop database модель_космических_кораблей;
+drop database модель_роботов;
+drop database модель_смартфонов;
+drop database модель_кафе;
+drop database модель_дач;

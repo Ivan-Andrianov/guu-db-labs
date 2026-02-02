@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    working_dir: /data
+    env_file: db.env
+    ports:
+      - target: "${POSTGRES_DB_CONTAINER_PORT}"
+        published: "${POSTGRES_HOST_PORT}"
+        protocol: tcp
+        mode: host
+    volumes:
+      - db_data:/data
+
+volumes:
+  db_data:
+    driver: local
+  dbeaver_data:
+    driver: local
