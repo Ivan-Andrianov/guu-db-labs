@@ -10,7 +10,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - db_data:/data
+      - db_data:/var/lib/postgresql/data
 
 volumes:
   db_data:
