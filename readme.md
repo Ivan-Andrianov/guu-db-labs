@@ -62,6 +62,8 @@ GRANT reader TO aleksey;
 -- Алексей безуспешно создает роль
 CREATE ROLE sergey;
 ```
+Результат:
+
 ![img_2.png](images/img_2.png)
 
 ```postgresql
@@ -69,4 +71,77 @@ CREATE ROLE sergey;
 SET ROLE reader;
 CREATE ROLE sergey;
 ```
+Результат:
+
 ![img_3.png](images/img_3.png)
+
+
+
+### Лабораторная работа №3
+
+**Шаги:**
+1. Создать DATABASE для хранения железнодорожной станционной модели;
+2. В созданной DATABASE создать таблицы: "Станции", "Станционные диспетчера";
+3. Создать роли Администратор, Диспетчер1, Диспетчер2, Диспетчер3 с возможностью подключения к БД с паролем;
+
+**Скрипты:**
+```postgresql
+create database railway_station;
+```
+Результат:
+
+![img.png](labs/lab3/image/img-2.png)
+
+```postgresql
+-- Таблица СТАНЦИИ
+create table stations (
+    station_id serial primary key,
+    name varchar(100) not null unique,
+    code varchar(10) unique,
+    location varchar(200),
+    opening_date date,
+    is_active boolean default true
+);
+
+-- Таблица СТАНЦИОННЫЕ ДИСПЕТЧЕРА
+create table dispatchers (
+    dispatcher_id serial primary key,
+    first_name varchar(50) not null,
+    last_name VARCHAR(50) not null,
+    station_id int not null,
+    hire_date date not null,
+    is_on_duty boolean default false,
+
+
+    constraint fk_station
+        foreign key (station_id)
+            references stations (station_id)
+            on delete restrict
+);
+```
+Результат:
+
+![img.png](images/img-5.png)
+
+```postgresql
+-- Создание роли администратора
+create role admin with login password '123' superuser;
+
+-- Создание роли диспетчеров
+create role dispatcher1 with login password '123' nosuperuser nocreatedb nocreaterole;
+create role dispatcher2 with login password '123' nosuperuser nocreatedb nocreaterole;
+create role dispatcher3 with login password '123' nosuperuser nocreatedb nocreaterole;
+
+-- Выдаю права на чтение таблиц диспетчерами
+grant select on table stations to dispatcher1, dispatcher2, dispatcher3;
+
+-- Включаю Row-Level Security для таблицы stations
+alter table stations enable row level security;
+```
+Результат:
+
+![img.png](labs/lab3/image/img-6.png)
+
+```postgresql
+
+```
