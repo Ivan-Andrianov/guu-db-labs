@@ -5,3 +5,9 @@
 ```bash
 docker compose --env-file=db.env up
 ```
+
+<hr>
+
+### База данных для выполнения заданий 
+
+![img.png](db.png)
