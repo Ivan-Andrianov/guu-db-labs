@@ -1,1 +1,0 @@
-create database car_model;
